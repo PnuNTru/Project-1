@@ -1,8 +1,8 @@
 # Project-1
 Group Members: 
 
-Phu Truong
-Jonathan Pena
+Phu Truong,
+Jonathan Pena,
 Sarah Camacho
 
 Contributions:
