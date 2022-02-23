@@ -88,7 +88,7 @@ public class LinkedBag<T> implements BagInterface<T>
 		if (nodeN != null)
 		{
 	 	// Replace located entry with entry in first node
-			nodeN.setData(firstNode.getData()); 
+			nodeN.setData(firstNode.getData());; 
 	 	// Remove first node
 			firstNode = firstNode.getNextNode(); 
  
@@ -112,7 +112,7 @@ public class LinkedBag<T> implements BagInterface<T>
 			if (anEntry.equals(currentNode.getData()))
 				found = true;
 			else
-				currentNode = currentNode.getNextNode();
+				currentNode = currentNode.getNext();
 		} // end while
   
 		return currentNode;
@@ -170,10 +170,10 @@ public class LinkedBag<T> implements BagInterface<T>
      *  Does not affect the contents of the bags used.
     	@param bag1 The bag you want to union with.
     	@return  The union of both bags as a new bag. Order does not matter and duplicates are allowed. */
-	public Object union(Object bag1) 
+	public BagInterface<T> union(BagInterface<T> aBag) 
     {
-		@SuppressWarnings("unchecked")
-		LinkedBag<T> otherBag = (LinkedBag<T>)bag1;
+		
+		LinkedBag<T> otherBag = (LinkedBag<T>)aBag;
 		if (firstNode==null || otherBag.isEmpty())
 			return new LinkedBag<T>();
 		
@@ -194,10 +194,10 @@ public class LinkedBag<T> implements BagInterface<T>
       * Does not affect the contents of the bags used.
         @param bag1  The bag you want to intersect with
         @return  The intersection of both bags as a new bag. */
-	public Object intersection(Object bag1) 
+	public BagInterface<T> intersection(BagInterface<T> aBag)  
     {
-		@SuppressWarnings("unchecked")
-		LinkedBag<T> otherBag = (LinkedBag<T>)bag1;
+		
+		LinkedBag<T> otherBag = (LinkedBag<T>)aBag;
 		if(firstNode==null || otherBag.isEmpty())
 			return new LinkedBag<T>();
 		
@@ -238,10 +238,10 @@ public class LinkedBag<T> implements BagInterface<T>
       * in another bag. Does not affect the contents of the bags used.
         @param bag1 The bag that elements you don't want in the first bag.
         @return  The difference of both bags as a new bag. */
-	public Object difference(Object bag1) 
+	public BagInterface<T> difference(BagInterface<T> aBag) 
     {
-		@SuppressWarnings("unchecked")
-		LinkedBag<T> otherBag = (LinkedBag<T>) bag1;
+		
+		LinkedBag<T> otherBag = (LinkedBag<T>) aBag;
 		if (firstNode == null || otherBag.isEmpty()) 
         {
 		    return new LinkedBag<T>();
@@ -286,6 +286,26 @@ public class LinkedBag<T> implements BagInterface<T>
          next = nextNode;
         }
         //end constructor
+
+		private T getData()
+		{
+			return data;
+		} //end getData
+
+		private void setData(T newData)
+		{
+			data = newData;
+		} //end getNextNode
+
+		private Node getNextNode()
+		{
+			return next;
+		} // end getNextNode
+
+		private void setNextNode(Node nextNode)
+		{
+			next = nextNode;
+		}// end setNextNode
     }
     //end Node
 }
