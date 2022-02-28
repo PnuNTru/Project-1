@@ -225,5 +225,14 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
       
       return result;
 	} 
+	
+	// Throws an exception if the client requests a capacity that is too large.
+   private void checkCapacity(int capacity)
+   {
+      if (capacity > MAX_CAPACITY)
+         throw new IllegalStateException("Attempt to create a bag whose capacity exceeds " +
+                                         "allowed maximum of " + MAX_CAPACITY);
+   } // end checkCapacity
+   
    
 }
