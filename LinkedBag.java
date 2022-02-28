@@ -192,7 +192,7 @@ public class LinkedBag<T> implements BagInterface<T>
       * Does not affect the contents of the bags used.
         @param bag1  The bag you want to intersect with
         @return  The intersection of both bags as a new bag. */
-	public BagInterface<T> intersection(BagInterface<T> aBag)  
+    public BagInterface<T> intersection(BagInterface<T> aBag)  
     {
 		
 		LinkedBag<T> otherBag = (LinkedBag<T>)aBag;
@@ -230,13 +230,13 @@ public class LinkedBag<T> implements BagInterface<T>
 			}
 		}
 	    return intersectionBag;
-	}
+    }
 
     /** Returns a new bag that contains elements in one bag after removing the elements that are found
       * in another bag. Does not affect the contents of the bags used.
         @param bag1 The bag that elements you don't want in the first bag.
         @return  The difference of both bags as a new bag. */
-	public BagInterface<T> difference(BagInterface<T> aBag) 
+    public BagInterface<T> difference(BagInterface<T> aBag) 
     {
 		
 		LinkedBag<T> otherBag = (LinkedBag<T>) aBag;
