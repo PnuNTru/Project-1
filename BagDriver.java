@@ -9,7 +9,7 @@ public class BagDriver
 {
     public static void main(String [] args)
     {
-        Baginterface<String> arrayBag1 = newResizeablearray<>();
+        BagInterface<String> arrayBag1 = new ResizeableArrayBag<>();
             arrayBag1.add("A");
             arrayBag1.add("B");
             arrayBag1.add("C");
@@ -17,7 +17,7 @@ public class BagDriver
             arrayBag1.add("E");
             arrayBag1.add("F");
         
-        Baginterface<String> arrayBag2 = newResizeablearray<>();
+        BagInterface<String> arrayBag2 = new ResizeableArrayBag<>();
         
             arrayBag2.add("A");
             arrayBag2.add("Z");
