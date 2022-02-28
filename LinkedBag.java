@@ -31,22 +31,22 @@ public class LinkedBag<T> implements BagInterface<T>
        @return  A newly allocated array of all the entries in this bag. */
 	public T[] toArray()
 	{
-      // The cast is safe because the new array contains null entries.
-      @SuppressWarnings("unchecked")
-      T[] result = (T[])new Object[numberOfEntries]; // Unchecked cast
-      
-      int index = 0;
-      Node currentNode = firstNode;
-      while ((index < numberOfEntries) && (currentNode != null))
-      {
-         result[index] = currentNode.data;
-         index++;
-         currentNode = currentNode.next;
-      } // end while
-      
-      return result;
-      // Note: The body of this method could consist of one return statement,
-      // if you call Arrays.copyOf
+	      // The cast is safe because the new array contains null entries.
+	      @SuppressWarnings("unchecked")
+	      T[] result = (T[])new Object[numberOfEntries]; // Unchecked cast
+
+	      int index = 0;
+	      Node currentNode = firstNode;
+		while ((index < numberOfEntries) && (currentNode != null))
+	    {
+		 	result[index] = currentNode.data;
+		 	index++;
+		 	currentNode = currentNode.next;
+	    } // end while
+
+	      return result;
+	      // Note: The body of this method could consist of one return statement,
+	      // if you call Arrays.copyOf
 	} // end toArray
 
 	/** Sees whether this bag is empty.
@@ -67,15 +67,15 @@ public class LinkedBag<T> implements BagInterface<T>
 	@return  Either the removed entry, if the removal was successful, or null. */
 	public T remove()
 	{
-   	T result = null;
-   	if (firstNode != null)
-    {
-	    result = firstNode.getData();
-   	    firstNode = firstNode.getNextNode(); // Remove first node from chain
-      	numberOfEntries--;
-    } // end if
-    return result;
-} // end remove
+		T result = null;
+		if (firstNode != null)
+		{
+		 	result = firstNode.getData();
+		 	firstNode = firstNode.getNextNode(); // Remove first node from chain
+			numberOfEntries--;
+		} // end if
+    	return result;
+	} // end remove
    
 /** Removes one occurrence of a given entry from this bag, if possible.
    	@param anEntry  The entry to be removed.
@@ -88,12 +88,10 @@ public class LinkedBag<T> implements BagInterface<T>
 		if (nodeN != null)
 		{
 	 	// Replace located entry with entry in first node
-			nodeN.setData(firstNode.getData());; 
+			nodeN.setData(firstNode.getData());
 	 	// Remove first node
 			firstNode = firstNode.getNextNode(); 
- 
-			numberOfEntries--;
-			 
+			numberOfEntries--; 
 			result = true;
 		} // end if
 	
@@ -151,8 +149,8 @@ public class LinkedBag<T> implements BagInterface<T>
 		 @param anEntry  The entry to locate.
 		 @return  True if the bag contains anEntry, or false otherwise. */
 	public boolean contains(T anEntry)
-   {
-      boolean found = false;
+	{
+    	boolean found = false;
 		Node currentNode = firstNode;
 
 		while(!found && (currentNode != null))
