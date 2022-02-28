@@ -8,11 +8,15 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
     private boolean integrity = false;
     private static final int MAX_CAPACITY = 100;
     
+    public ResizeableArrayBag()
+    {
+        T[] newbag = (T[])new Object[DEFAULT_CAPACITY];
+    }
     public ResizeableArrayBag(int capacity)
     {
         if (capacity <= MAX_CAPACITY)
         {
-            @SupressWarnings("uncheckeed")
+             @SuppressWarnings("unchecked")
             T[] tempBag = (T[])new Object[capacity];
             bag = tempBag;
             numberOfEntries = 0;
@@ -117,46 +121,6 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
      if (!integrity)
         throw new SecurityException("ResizableArrayBag is corrupt.");
     }
-    /*public BagInterface<T> union(BagInterface<T> newBag)
-    {
-        ResizableArrayBag<T> other = (ResizableArrayBag<T>) newBag;
-        ResizableArrayBag<T> unionBag = new ResizableArrayBag<T>(this.bag,this.numberOfEntries);
-
-        checkInitialization();
-        for (int i = 0; i < other.numberOfEntries; i++) {
-            unionBag.add(other.bag[i]);
-        }
-        return unionBag;
-    } 
-    public BagInterface<T> intersection(BagInterface<T> newBag)
-    {
-        ResizableArrayBag<T> other = (ResizableArrayBag<T>) newBag;
-        ResizableArrayBag<T> intersectionBag = new ResizableArrayBag<T>();
-        ResizableArrayBag<T> copyOfOtherBag = new ResizableArrayBag<T>(other.bag, other.numberOfEntries);
-
-        for (int i = 0; i < this.numberOfEntries; i++) {
-            int index = copyOfOtherBag.getIndexOf(this.bag[i]);
-            if (index != -1) {
-                T removedObject = copyOfOtherBag.removeEntry(index);
-                intersectionBag.add(removedObject);
-            }
-        }
-        return intersectionBag;
-    
-    }
-    public BagInterface<T> difference(BagInterface<T> newBag)
-    {
-        ResizableArrayBag<T> other = (ResizableArrayBag<T>) otherBag;
-        ResizableArrayBag<T> differenceBag = new ResizableArrayBag<T>(this.bag, this.numberOfEntries);
-        for (int i = 0; i < other.numberOfEntries ; i++) 
-        { 
-            int index = differenceBag.getIndexOf(other.bag[i]);
-            if(index != -1 )
-            {
-                differenceBag.removeEntry(index);
-            }
-        }
-        return differenceBag;*/
         @Override
    public BagInterface<T> union(BagInterface<T> other){
 
@@ -189,7 +153,6 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
 
       // The other bag's copy
       ResizeableArrayBag<T> otherCopy = new ResizeableArrayBag<T>(other.toArray());
-
       // Loop through and add our intersected items
       for(int i = 0; i < this.numberOfEntries; i++){
          if (otherCopy.remove(this.bag[i])){
@@ -253,7 +216,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
       
 		if (!isEmpty() && (givenIndex >= 0))
 		{
-         result = bag[givenIndex];          // Entry to remove
+         result = bag[givenIndex];         
          int lastIndex = numberOfEntries - 1;
          bag[givenIndex] = bag[lastIndex];  // Replace entry to remove with last entry
          bag[lastIndex] = null;             // Remove reference to last entry
@@ -261,7 +224,6 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
 		} // end if
       
       return result;
-	} // end removeEntry
+	} 
    
-   }
 }
