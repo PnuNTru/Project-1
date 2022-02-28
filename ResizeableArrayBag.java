@@ -225,5 +225,43 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
 
       return bagDifference;
    }
+   
+   private int getIndexOf(T anEntry)
+	{
+		int where = -1;
+		boolean found = false;
+		int index = 0;
+      
+      while (!found && (index < numberOfEntries))
+		{
+			if (anEntry.equals(bag[index]))
+			{
+				found = true;
+				where = index;
+			} // end if
+         index++;
+		} // end while
+      
+      // Assertion: If where > -1, anEntry is in the array bag, and it
+      // equals bag[where]; otherwise, anEntry is not in the array.
+      
+		return where;
+	} // end getIndexOf
+   private T removeEntry(int givenIndex)
+	{
+		T result = null;
+      
+		if (!isEmpty() && (givenIndex >= 0))
+		{
+         result = bag[givenIndex];          // Entry to remove
+         int lastIndex = numberOfEntries - 1;
+         bag[givenIndex] = bag[lastIndex];  // Replace entry to remove with last entry
+         bag[lastIndex] = null;             // Remove reference to last entry
+         numberOfEntries--;
+		} // end if
+      
+      return result;
+	} // end removeEntry
+   
    }
 }
