@@ -117,7 +117,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
      if (!integrity)
         throw new SecurityException("ResizableArrayBag is corrupt.");
     }
-    public BagInterface<T> union(BagInterface<T> newBag)
+    /*public BagInterface<T> union(BagInterface<T> newBag)
     {
         ResizableArrayBag<T> other = (ResizableArrayBag<T>) newBag;
         ResizableArrayBag<T> unionBag = new ResizableArrayBag<T>(this.bag,this.numberOfEntries);
@@ -127,7 +127,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
             unionBag.add(other.bag[i]);
         }
         return unionBag;
-    }
+    } 
     public BagInterface<T> intersection(BagInterface<T> newBag)
     {
         ResizableArrayBag<T> other = (ResizableArrayBag<T>) newBag;
@@ -156,6 +156,74 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
                 differenceBag.removeEntry(index);
             }
         }
-        return differenceBag;
-    }
+        return differenceBag;*/
+        @Override
+   public BagInterface<T> union(BagInterface<T> other){
+
+      checkIntegrity();
+      ResizeableArrayBag<T> bagUnion = new ResizeableArrayBag<T>();
+      T[] unionBag = other.toArray();
+
+      for (int i = 0; i < this.numberOfEntries; i++)
+     	{
+         bagUnion.add(bag[i]);
+     	}
+      for (int ii = 0; ii < other.getCurrentSize(); ii++)
+     	{
+         bagUnion.add(unionBag[ii]);
+     	}
+     	 return bagUnion;
+        }
+       @Override
+   public BagInterface<T> intersection(BagInterface<T> other)
+   {  
+      // Check the integrity
+      checkIntegrity();
+      // The RAB we will return
+      ResizeableArrayBag<T> bagIntersection = new ResizeableArrayBag<T>();
+
+      // Check if anything is empty
+      if(isEmpty() || other == null || other.isEmpty()){
+         return bagIntersection;
+      }
+
+      // The other bag's copy
+      ResizeableArrayBag<T> otherCopy = new ResizeableArrayBag<T>(other.toArray());
+
+      // Loop through and add our intersected items
+      for(int i = 0; i < this.numberOfEntries; i++){
+         if (otherCopy.remove(this.bag[i])){
+            bagIntersection.add(this.bag[i]);
+         }
+      }
+
+      return bagIntersection;
+   }
+   
+    @Override
+   public BagInterface<T> difference(BagInterface<T> other)
+   {
+      // Check the integrity
+      checkIntegrity();
+      // The array bag we will return
+      ResizeableArrayBag<T> bagDifference = new ResizeableArrayBag<T>();
+
+      // Check if anything is empty
+      if(isEmpty() || other == null || other.isEmpty()){
+         return bagDifference;
+      }
+
+      // The other bag's copy
+      ResizeableArrayBag<T> otherCopy = new ResizeableArrayBag<T>(other.toArray());
+
+      // Loop through and add our difference items
+      for(int i = 0; i < this.numberOfEntries; i++){
+         if (!otherCopy.remove(this.bag[i])){
+            bagDifference.add(this.bag[i]);
+         }
+      }
+
+      return bagDifference;
+   }
+   }
 }
