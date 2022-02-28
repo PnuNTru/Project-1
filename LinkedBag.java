@@ -110,7 +110,7 @@ public class LinkedBag<T> implements BagInterface<T>
 			if (anEntry.equals(currentNode.getData()))
 				found = true;
 			else
-				currentNode = currentNode.getNext();
+				currentNode = currentNode.getNextNode();
 		} // end while
   
 		return currentNode;
