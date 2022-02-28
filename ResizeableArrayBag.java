@@ -56,16 +56,32 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
         }
         return result;
     }
-    
+    public int getCurrentSize()
+    {
+        return numberOfEntries;
+    } 
     public boolean isEmpty()
     {
         return numberOfEntries == 0;
-    } // end isEmpty
+    }
     
     public boolean isFull()
     {
         return numberOfEntries == bag.length;
     }
+    
+    public int getFrequencyOf(T anEntry)
+    {
+        checkIntegrity();
+         int counter = 0;
+         for (int index = 0; index < numberOfEntries; index++)
+         {
+            if (anEntry.equals(bag[index]))
+            {
+                counter++;
+            }
+         }
+    } 
     // Doubles the size of the array bag.
     // Precondition: checkIntegrity has been called.
     private void doubleCapacity()
