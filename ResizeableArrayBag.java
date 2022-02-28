@@ -120,4 +120,16 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
      if (!integrity)
         throw new SecurityException("ResizableArrayBag is corrupt.");
     }
+    public BagInterface<T> union(BagInterface<T> newBag)
+    {
+        Re
+    }
+    public BagInterface<T> intersection(BagInterface<T> newBag)
+    {
+    
+    }
+    public BagInterface<T> difference(BagInterface<T> newBag)
+    {
+    
+    }
 }
