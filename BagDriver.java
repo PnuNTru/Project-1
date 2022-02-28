@@ -52,4 +52,5 @@ public class BagDriver
         System.out.println("The Union between linkedBag1 & linkedBag2 is: " + Arrays.toString(linkedBag1.union(linkedBag2).toArray()));
         System.out.println("The Intersection between linkedBag1 & linkedBag2 is: " + Arrays.toString(linkedBag1.intersection(linkedBag2).toArray()));
         System.out.println("The Difference between linkedBag1 & linkedBag2 is: " + Arrays.toString(linkedBag1.difference(linkedBag2).toArray()));
+    }
 }
