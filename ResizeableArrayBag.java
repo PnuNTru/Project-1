@@ -25,6 +25,13 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
         else
             throw new IllegalStateException("Attempt to create a bag whose capacity exceeds allowed " + "maximum of " + MAX_CAPACITY);
     }
+    public ResizeableArrayBag(T[] newbag)
+    {
+        checkCapacity(newbag.length);
+        bag = Arrays.copyOf(newbag, newbag.length);
+        numberOfEntries = newbag.length;
+        integrity = true;
+    }
     /** Adds a new entry to this bag.
         @param newEntry The object to be added as a new entry.
         @return True. */
@@ -101,6 +108,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
                 counter++;
             }
          }
+        return counter;
     } 
     
     public boolean contains(T anEntry)
@@ -210,24 +218,29 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
       
 		return where;
 	} // end getIndexOf
-	private T removeEntry(int givenIndex)
+   private T removeEntry(int givenIndex)
 	{
 		T result = null;
+      
 		if (!isEmpty() && (givenIndex >= 0))
 		{
-			 result = bag[givenIndex];         
-			 int lastIndex = numberOfEntries - 1;
-			 bag[givenIndex] = bag[lastIndex];  // Replace entry to remove with last entry
-			 bag[lastIndex] = null;             // Remove reference to last entry
-			 numberOfEntries--;
+         result = bag[givenIndex];         
+         int lastIndex = numberOfEntries - 1;
+         bag[givenIndex] = bag[lastIndex];  // Replace entry to remove with last entry
+         bag[lastIndex] = null;             // Remove reference to last entry
+         numberOfEntries--;
 		} // end if
-
+      
       return result;
 	} 
+	
+	// Throws an exception if the client requests a capacity that is too large.
    private void checkCapacity(int capacity)
    {
       if (capacity > MAX_CAPACITY)
          throw new IllegalStateException("Attempt to create a bag whose capacity exceeds " +
                                          "allowed maximum of " + MAX_CAPACITY);
-   }
+   } // end checkCapacity
+   
+   
 }
