@@ -70,6 +70,25 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
         return numberOfEntries == bag.length;
     }
     
+    public T remove()
+    {
+        checkIntegrity();
+        T result = removeEntry(numberOfEntries - 1);
+        return result;
+     }
+     public boolean remove(T anEntry)
+    {
+        checkIntegrity();
+        int index = getIndexOf(anEntry);
+        T result = removeEntry(index); 
+        return anEntry.equals(result);
+    }
+    public void clear() 
+    {
+         while (!isEmpty())
+         remove();
+    }
+    
     public int getFrequencyOf(T anEntry)
     {
         checkIntegrity();
@@ -82,6 +101,12 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
             }
          }
     } 
+    
+    public boolean contains(T anEntry)
+    {
+        checkIntegrity();
+        return getIndexOf(anEntry) > -1; // or >= 0
+    }
     // Doubles the size of the array bag.
     // Precondition: checkIntegrity has been called.
     private void doubleCapacity()
