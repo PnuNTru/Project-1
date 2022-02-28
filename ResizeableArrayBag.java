@@ -4,9 +4,11 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
     private T[] bag;
     private static final int DEFAULT_CAPACITY = 25;
     private int numberOfEntries;
+    
+    private boolean checkIntegrity = false;
+    private static final int MAX_CAPACITY = 100;
     public ResizeableArrayBag(int capacity)
     {
-        
 
     }
     
@@ -20,9 +22,8 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
         @return True. */
     public boolean add(T newEntry)
     {
-        checkIntegrity();
-        boolean result = true;
-        if (isArrayFull())
+        checkIntegrity= true;
+        if (numberOfEntries == DEFAULT_CAPACITY)
         {
             doubleCapacity();
         } // end if
@@ -30,7 +31,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
         bag[numberOfEntries] = newEntry;
         numberOfEntries++;
 
-        return true;
+        return checkIntegrity;
     } // end add
 
     // Doubles the size of the array bag.
