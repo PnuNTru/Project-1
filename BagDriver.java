@@ -41,7 +41,7 @@ public class BagDriver
             linkedBag2.add("B");
             linkedBag2.add("C");
             linkedBag2.add("H");
-            linkedBag2.add("J:);
+            linkedBag2.add("J");
             linkedBag2.add("S");
             linkedBag2.add("Y");
         
