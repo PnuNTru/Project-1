@@ -1,3 +1,7 @@
+//CS2400
+//Project 1
+//February 28, 2022
+//Phu Troung Sarah Camacho Jonathan Pena
 /** An interface that describes the operations of a bag of objects. */
 public interface BagInterface<T>
 {
@@ -36,13 +40,13 @@ public T[] toArray();
 /** Finds the union of 2 bags/sets/collections
     @param newBag the bag to be added
     @return the union of the bag receiving the call to the method and the bag that is the method's one argument*/
-public BagInterface<T> union(BagInterface<T> newBag);
+public BagInterface<T> union(BagInterface<T> aBag);
 /**Finds the intersection of 2 bags/sets/collections
     @param newBag the bag being compared 
     @return the intersection of the bag receiving the call to the method and the bag that is the method's one argument*/
-public BagInterface<T> intersection(BagInterface<T> newBag);
+public BagInterface<T> intersection(BagInterface<T> aBag);
 /**Finds the difference bewtween 2 bags/sets/collections
     @param newBag the bag whose elements will be subtracted from the 1st bag 
     @return the difference of the bag receiving the call to the method and the bag that is the method's one argument */
-public BagInterface<T> difference(BagInterface<T> newBag);
+public BagInterface<T> difference(BagInterface<T> aBag);
 } // end BagInterface
