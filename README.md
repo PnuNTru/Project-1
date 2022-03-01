@@ -15,5 +15,5 @@ Extra Features Implemented:
 
 Link to screencast on some video streaming website: https://youtu.be/6Y4rBJugfnQ
 
-Link to the Javadoc's start page:
+Link to the Javadoc's start page: https://github.com/Tophuu/Project-1/tree/main/JavaDoc 
 
