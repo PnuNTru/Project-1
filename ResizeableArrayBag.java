@@ -48,8 +48,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
     public boolean add(T newEntry)
     {
     	checkIntegrity();
-        boolean result = true;
-        if (isFull())
+        if (isArrayFull())
 	{
             doubleCapacity();
         }
@@ -85,12 +84,12 @@ public class ResizeableArrayBag<T> implements BagInterface<T>
         return numberOfEntries == 0;
     }
     
-    /** Sees whether this bag is full.
-	@return True if the bag is at capacity, or false if not. */
-    public boolean isFull()
+     // Returns true if the array bag is full, or false if not.
+    private boolean isArrayFull()
     {
-        return numberOfEntries == bag.length;
-    }
+	return numberOfEntries >= bag.length;
+    } // end isArrayFull
+  
     
     /** Removes one unspecified entry from this bag, if possible.
 	@return Either the removed entry, if the removal was successful, or null. */
